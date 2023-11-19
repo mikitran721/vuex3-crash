@@ -1,6 +1,6 @@
 <template>
   <div class="todo-list">
-    <ul v-if="isAuthenticated">
+    <ul v-if="auth.isAuthenticated">
         <li v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
         </li>
@@ -15,7 +15,16 @@ import { mapState } from 'vuex';
 
 export default {
     name:'TodosApp',
-    computed:{
+    //viet tat
+    computed:mapState(['todos','auth']) //lay duoc 1 cap
+    /* 
+    //viet day du
+    computed:mapState({
+        todos:state=>state.todos,
+        isAuthenticated:state=>state.auth.isAuthenticated
+    }) */
+    
+    /*computed:{
         //xao nau data
         todos(){
             return this.$store.state.todos;
@@ -23,7 +32,7 @@ export default {
         ,isAuthenticated(){
             return this.$store.state.auth.isAuthenticated;
         }
-    }
+    } */
     //trang thai khoi diem ~ ref() cua vue3
     /* data(){
         return{

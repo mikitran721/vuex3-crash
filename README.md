@@ -19,3 +19,4 @@
 ## HELPERS
 
 - muc dich: giup tranh viet nhieu state tai component
+- `mapState from vuex`
