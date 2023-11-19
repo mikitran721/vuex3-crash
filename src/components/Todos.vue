@@ -1,18 +1,31 @@
 <template>
   <div class="todo-list">
-    <ul>
+    <ul v-if="isAuthenticated">
         <li v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
         </li>
     </ul>
+    <p v-else style="text-align: center;">Not authorized</p>
   </div>
 </template>
 
 <script>
+//helpers
+import { mapState } from 'vuex';
+
 export default {
     name:'TodosApp',
+    computed:{
+        //xao nau data
+        todos(){
+            return this.$store.state.todos;
+        }
+        ,isAuthenticated(){
+            return this.$store.state.auth.isAuthenticated;
+        }
+    }
     //trang thai khoi diem ~ ref() cua vue3
-    data(){
+    /* data(){
         return{
             todos:[
                 {id:1,title:'Viec 1',completed:false},
@@ -20,7 +33,7 @@ export default {
                 {id:3,title:'Viec 3',completed:true},
             ]
         }
-    }
+    } */
 }
 </script>
 

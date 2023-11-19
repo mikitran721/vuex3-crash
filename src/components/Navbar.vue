@@ -4,13 +4,19 @@
     <ul>
         <li>Home</li>
         <li>About</li>
+        <li>Total todos: {{ totalTodos }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-    name:'NavbarApp'
+    name:'NavbarApp',
+    computed:{
+        totalTodos(){
+            return this.$store.state.todos.length;
+        }
+    }
 }
 </script>
 
