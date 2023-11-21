@@ -9,16 +9,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 // import { mapState } from 'vuex';
 
 export default {
     name:'StatusBar'
     // ,computed:mapState(['todos'])
-    ,computed:{
+    ,computed:mapGetters(['doneTodos'])
+    /* ,computed:{
         doneTodos(){
-            return this.$store.state.todos.filter(todo => todo.completed)
+            //return this.$store.state.todos.filter(todo => todo.completed)
+
+            //using getters
+            return this.$store.getters.doneTodos
         }
-    }
+    } */
 }
 </script>
 

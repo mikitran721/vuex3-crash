@@ -20,3 +20,10 @@
 
 - muc dich: giup tranh viet nhieu state tai component
 - `mapState from vuex`
+
+## GETTERS
+
+- toi uu code, su dung lai giua cac component
+- khai bao trong store/index.js
+- `mapGetters()` viet tat cho goi Getters (cu phap gon ket hop `computed`)
+- co the su dung `getters` ke thua xu ly
