@@ -3,13 +3,14 @@
 - `vue create vuex-crash` chon vue2
 - `npm i --save vuex@3.6.0` cai dat vuex
 - `npm i uuid` su dung auto ID
-- `npm i axios`
+- `npm i axios` su dung dong bo voi `actions`
 
 # NOI DUNG
 
 - su dung state `giua cac component`
 - `computed:` du lieu can tinh toan - ko co san
 - `data:` du lieu co san/static ~ ref() vue3
+- khi su dung `async - await` can dat trong `try-catch`
 
 # VUEX
 
@@ -17,6 +18,7 @@
 - b1: tao store
 - b2: khai bao su dung trong `main.js`
 - b3: truy xuat common data tai cac component can thiet
+- nhung gi khai bao trong `created` se duoc render ngay khi component hoat dong
 
 ## HELPERS
 

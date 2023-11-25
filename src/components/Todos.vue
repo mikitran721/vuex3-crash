@@ -22,6 +22,9 @@ import TodoForm from './TodoForm.vue'
 export default {
     name:'TodosApp'
     ,components:{TodoForm}
+    ,created(){
+        this.getTodos();
+    }
 
     //su dung ham-method
     ,methods:{...mapMutations(['MARK_COMPLETE']),
@@ -29,7 +32,7 @@ export default {
                     //goi action trong store
                     this.$store.dispatch('deleteTodo',todoId)
                 } */
-                ...mapActions(['deleteTodo'])
+                ...mapActions(['deleteTodo','getTodos'])
             }
     /* ,methods:{
         markTodoCompleted(todoId){

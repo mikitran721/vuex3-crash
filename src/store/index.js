@@ -1,3 +1,4 @@
+import axios from "axios";
 import Vue from "vue";
 import Vuex from "vuex";
 
@@ -6,11 +7,7 @@ Vue.use(Vuex);
 //data chung
 const storeData = {
   state: {
-    todos: [
-      { id: 1, title: "Viec 1", completed: false },
-      { id: 2, title: "Viec 2", completed: false },
-      { id: 3, title: "Viec 3", completed: true },
-    ],
+    todos: [],
     auth: {
       isAuthenticated: false,
     },
@@ -29,16 +26,39 @@ const storeData = {
     },
   },
   actions: {
+    async getTodos({ commit }) {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/todos?_limit=5"
+        );
+        //dua response nay thanh sate = mutation
+        commit("SET_TODOS", response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     // deleteTodo(context,todoId){
-    deleteTodo({ commit }, todoId) {
+    async deleteTodo({ commit }, todoId) {
       //goi len mutation can su dung
       // context.commit("DELETE_TODO",todoId);
-      commit("DELETE_TODO", todoId);
+      try {
+        await axios.delete(
+          `https://jsonplaceholder.typicode.com/todos/${todoId}`
+        );
+        commit("DELETE_TODO", todoId);
+      } catch (error) {
+        console.log(error);
+      }
     },
 
     //action - addTodo
-    addTodo({ commit }, newTodo) {
-      commit("ADD_TODO", newTodo);
+    async addTodo({ commit }, newTodo) {
+      try {
+        await axios.post("https://jsonplaceholder.typicode.com/todos", newTodo);
+        commit("ADD_TODO", newTodo);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 
@@ -59,6 +79,10 @@ const storeData = {
 
     ADD_TODO(state, newTodo) {
       state.todos.unshift(newTodo);
+    },
+
+    SET_TODOS(state, todos) {
+      state.todos = todos;
     },
   },
 };
