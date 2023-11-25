@@ -1,5 +1,6 @@
 <template>
   <div class="todo-list">
+    <TodoForm />
     <ul v-if="auth.isAuthenticated">
         <li :class="todo.completed ? 'completed' :''" v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
@@ -16,9 +17,11 @@
 <script>
 //helpers
 import { mapActions, mapMutations, mapState } from 'vuex';
+import TodoForm from './TodoForm.vue'
 
 export default {
     name:'TodosApp'
+    ,components:{TodoForm}
 
     //su dung ham-method
     ,methods:{...mapMutations(['MARK_COMPLETE']),

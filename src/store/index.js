@@ -35,6 +35,11 @@ const storeData = {
       // context.commit("DELETE_TODO",todoId);
       commit("DELETE_TODO", todoId);
     },
+
+    //action - addTodo
+    addTodo({ commit }, newTodo) {
+      commit("ADD_TODO", newTodo);
+    },
   },
 
   //mutation - thay doi state
@@ -50,6 +55,10 @@ const storeData = {
     },
     DELETE_TODO(state, todoId) {
       state.todos = state.todos.filter((todo) => todo.id !== todoId);
+    },
+
+    ADD_TODO(state, newTodo) {
+      state.todos.unshift(newTodo);
     },
   },
 };

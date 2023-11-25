@@ -2,6 +2,8 @@
 
 - `vue create vuex-crash` chon vue2
 - `npm i --save vuex@3.6.0` cai dat vuex
+- `npm i uuid` su dung auto ID
+- `npm i axios`
 
 # NOI DUNG
 
