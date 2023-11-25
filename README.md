@@ -19,11 +19,26 @@
 ## HELPERS
 
 - muc dich: giup tranh viet nhieu state tai component
-- `mapState from vuex`
+- helper `mapState from vuex`
 
 ## GETTERS
 
 - toi uu code, su dung lai giua cac component
 - khai bao trong store/index.js
-- `mapGetters()` viet tat cho goi Getters (cu phap gon ket hop `computed`)
+- helper `mapGetters()` viet tat cho goi Getters (cu phap gon ket hop `computed`)
 - co the su dung `getters` ke thua xu ly
+
+## MUTATIONS
+
+- la cach ! de thay doi state khi user tuong tac tren browsers
+- khai bao trong `store/index.js`
+- ten su dung trong mutation theo dang `KEY_NAME`
+- de goi su dung 1 mutation nao do tai component, can goi qua `methods` == tuong ung voi cac function() trong setup() cua vue3
+- co the su dung helper `mapMutation`
+
+## ACTIONS
+
+- do mutations luon dong bo, thay doi state don gian lien quan toi UI; neu su dung cho tac vu bat dong bo se ko phu hop.
+- de thay doi state theo dang bat dong bo (try..catch; promise) can su dung ACTIONS;
+- `actions` de thay doi state; la trung gian giua UI va Mutations de thay doi state;
+- co the su dung helpers `mapActions`

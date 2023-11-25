@@ -6,18 +6,31 @@
         <li>About</li>
         <li v-if="auth.isAuthenticated">
             Total todos: {{ todos.length }}
-            <button>Logout</button>
+            <!-- <button @click="loginOrLogout">Logout</button> -->
+            <button @click="TOGGLE_AUTH">Logout</button>
         </li>
-        <li v-else><button>Login</button></li>
+        <li v-else>
+            <!-- <button @click="loginOrLogout">Login</button> -->
+            <button @click="TOGGLE_AUTH">Login</button>
+        </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
     name:'NavbarApp',
-    computed:mapState(['todos','auth'])
+    computed:mapState(['todos','auth']),
+
+    //sung dung helper `mapMutation`
+    methods:mapMutations(['TOGGLE_AUTH'])
+    /* methods:{
+        loginOrLogout(){
+            //goi toi mutation de thay doi state
+            this.$store.commit('TOGGLE_AUTH')
+        }
+    } */
     /* computed:{
         totalTodos(){
             return this.$store.state.todos.length;

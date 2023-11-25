@@ -1,14 +1,14 @@
 <template>
-  <p class="progress-bar">
+  <p v-if="auth.isAuthenticated" class="progress-bar">
     Progress: {{progress}} %
   </p>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 export default {
     name:"ProgressBar"
-    ,computed:mapGetters(['progress'])
+    ,computed:{...mapGetters(['progress']),...mapState(['auth'])}
     /* ,computed:{
         progress(){
             return Math.round(this.$store.state.todos.filter(todo => todo.completed).length / this.$store.state.todos.length *100);

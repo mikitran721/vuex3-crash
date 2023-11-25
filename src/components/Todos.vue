@@ -1,8 +1,12 @@
 <template>
   <div class="todo-list">
     <ul v-if="auth.isAuthenticated">
-        <li v-for="todo in todos" :key="todo.id">
+        <li :class="todo.completed ? 'completed' :''" v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
+
+            <!-- <input @change="markTodoCompleted(todo.id)" type="checkbox" :checked="todo.completed" /> -->
+            <input @change="MARK_COMPLETE(todo.id)" type="checkbox" :checked="todo.completed" />
+            <button @click="deleteTodo(todo.id)">Delete</button>
         </li>
     </ul>
     <p v-else style="text-align: center;">Not authorized</p>
@@ -11,12 +15,28 @@
 
 <script>
 //helpers
-import { mapState } from 'vuex';
+import { mapActions, mapMutations, mapState } from 'vuex';
 
 export default {
-    name:'TodosApp',
+    name:'TodosApp'
+
+    //su dung ham-method
+    ,methods:{...mapMutations(['MARK_COMPLETE']),
+                /* deleteTodo(todoId){
+                    //goi action trong store
+                    this.$store.dispatch('deleteTodo',todoId)
+                } */
+                ...mapActions(['deleteTodo'])
+            }
+    /* ,methods:{
+        markTodoCompleted(todoId){
+            // console.log(todoId)
+            //goi mutation
+            this.$store.commit('MARK_COMPLETE',todoId)
+        }
+    } */
     //viet tat
-    computed:mapState(['todos','auth']) //lay duoc 1 cap
+    ,computed:mapState(['todos','auth']) //lay duoc 1 cap
     /* 
     //viet day du
     computed:mapState({
@@ -59,5 +79,30 @@ export default {
     border-radius: 4px;
     background: rgb(240,240,240);
     color: #000;
+}
+
+.todo-list li input[type='checkbox']{
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* safari & chrome */
+    -o-transform: scale(2); /* opera */
+    transform: scale(2);
+    padding: 10px;
+    float: right;
+}
+
+.todo-list li.completed{
+    background: rgb(119,218,243);
+}
+
+.todo-list li button{
+    float:right;
+    margin-right: 20px;
+}
+
+.todo-list li button:hover{
+    cursor: pointer;
+    background: red;
+    color: white;
 }
 </style>

@@ -28,6 +28,30 @@ const storeData = {
       return Math.round((doneTodos.length / state.todos.length) * 100);
     },
   },
+  actions: {
+    // deleteTodo(context,todoId){
+    deleteTodo({ commit }, todoId) {
+      //goi len mutation can su dung
+      // context.commit("DELETE_TODO",todoId);
+      commit("DELETE_TODO", todoId);
+    },
+  },
+
+  //mutation - thay doi state
+  mutations: {
+    TOGGLE_AUTH(state) {
+      state.auth.isAuthenticated = !state.auth.isAuthenticated;
+    },
+    MARK_COMPLETE(state, todoId) {
+      state.todos.map((todo) => {
+        if (todo.id === todoId) todo.completed = !todo.completed;
+        return todo;
+      });
+    },
+    DELETE_TODO(state, todoId) {
+      state.todos = state.todos.filter((todo) => todo.id !== todoId);
+    },
+  },
 };
 
 const store = new Vuex.Store(storeData);
