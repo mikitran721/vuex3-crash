@@ -4,7 +4,10 @@ const state = {
   },
 };
 
-const getters = {};
+const getters = {
+  //rut gon cho cach viet auth.auth.isAuthenticated o cac component #
+  isAuthenticated: (state) => state.auth.isAuthenticated,
+};
 
 const actions = {};
 

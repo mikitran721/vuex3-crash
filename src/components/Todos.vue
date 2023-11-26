@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <TodoForm />
-    <ul v-if="auth.auth.isAuthenticated">
+    <ul v-if="isAuthenticated">
         <li :class="todo.completed ? 'completed' :''" v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
 
@@ -16,7 +16,7 @@
 
 <script>
 //helpers
-import { mapActions, mapMutations, mapState } from 'vuex';
+import { mapActions, mapGetters, mapMutations} from 'vuex';
 import TodoForm from './TodoForm.vue'
 
 export default {
@@ -42,7 +42,8 @@ export default {
         }
     } */
     //viet tat
-    ,computed:mapState(['todos','auth']) //lay duoc 1 cap
+    // ,computed:{...mapState(['todos']),...mapGetters(['todos','isAuthenticated'])} //lay duoc 1 cap
+    ,computed:{...mapGetters(['todos','isAuthenticated'])} //lay duoc 1 cap
     /* 
     //viet day du
     computed:mapState({
