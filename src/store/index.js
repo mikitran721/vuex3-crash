@@ -2,15 +2,18 @@ import axios from "axios";
 import Vue from "vue";
 import Vuex from "vuex";
 
+//import MODULES
+import auth from "./modules/auth";
+
 Vue.use(Vuex);
 
 //data chung
 const storeData = {
+  modules: {
+    auth,
+  },
   state: {
     todos: [],
-    auth: {
-      isAuthenticated: false,
-    },
   },
   getters: {
     doneTodos: (state) => state.todos.filter((todo) => todo.completed),
@@ -64,9 +67,6 @@ const storeData = {
 
   //mutation - thay doi state
   mutations: {
-    TOGGLE_AUTH(state) {
-      state.auth.isAuthenticated = !state.auth.isAuthenticated;
-    },
     MARK_COMPLETE(state, todoId) {
       state.todos.map((todo) => {
         if (todo.id === todoId) todo.completed = !todo.completed;

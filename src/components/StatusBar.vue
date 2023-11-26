@@ -1,5 +1,5 @@
 <template>
-  <div class="status-bar" v-if="auth.isAuthenticated">
+  <div class="status-bar" v-if="auth.auth.isAuthenticated">
     <p>Done</p>
     <ul>
         <!-- <li v-for="todo in todos.filter(todo => todo.completed)" :key="todo.id">{{ todo.title }}</li> -->

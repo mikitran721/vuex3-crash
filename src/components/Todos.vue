@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <TodoForm />
-    <ul v-if="auth.isAuthenticated">
+    <ul v-if="auth.auth.isAuthenticated">
         <li :class="todo.completed ? 'completed' :''" v-for="todo in todos" :key="todo.id">
             {{ todo.title }}
 

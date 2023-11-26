@@ -46,3 +46,8 @@
 - de thay doi state theo dang bat dong bo (try..catch; promise) can su dung ACTIONS;
 - `actions` de thay doi state; la trung gian giua UI va Mutations de thay doi state;
 - co the su dung helpers `mapActions`
+
+## MODULES
+
+- tach state quan ly rieng trong store
+- gom quan ly tat ca `getters, actions, mutations` lien quan den state can quan ly

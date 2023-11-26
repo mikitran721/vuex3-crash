@@ -1,5 +1,5 @@
 <template>
-  <p v-if="auth.isAuthenticated" class="progress-bar">
+  <p v-if="auth.auth.isAuthenticated" class="progress-bar">
     Progress: {{progress}} %
   </p>
 </template>
